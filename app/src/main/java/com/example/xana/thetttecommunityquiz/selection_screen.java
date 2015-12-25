@@ -1,4 +1,4 @@
-package com.thetttecommunity.thetttecommunityquizgame;
+package com.example.xana.thetttecommunityquiz;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -9,7 +9,7 @@ import android.view.View;
 
 public class selection_screen extends AppCompatActivity {
 
-    @Override
+/*    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection_screen);
@@ -24,6 +24,6 @@ public class selection_screen extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
-    }
+    }*/
 
 }

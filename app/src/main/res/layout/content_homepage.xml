@@ -10,10 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.xana.thetttecommunityquiz.homepage"
-    tools:showIn="@layout/activity_homepage">
+    tools:showIn="@layout/activity_homepage"
+    android:background="@drawable/main_homepage_lite">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:text="Play Now"
+        android:id="@+id/play_now"
+        android:layout_marginBottom="165dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#ffffff"
+        android:background="#f60808" />
 </RelativeLayout>

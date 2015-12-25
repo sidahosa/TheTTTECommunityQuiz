@@ -1,4 +1,4 @@
-package com.thetttecommunity.thetttecommunityquizgame;
+package com.example.xana.thetttecommunityquiz;
 
 import java.io.File;
 import java.io.FileNotFoundException;

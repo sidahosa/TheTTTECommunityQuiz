@@ -1,4 +1,4 @@
-package com.thetttecommunity.thetttecommunityquizgame;
+package com.example.xana.thetttecommunityquiz;
 
 /**
  * Created by Shawn Idahosa on 12/19/2015.
