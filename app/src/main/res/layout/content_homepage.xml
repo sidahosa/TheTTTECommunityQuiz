@@ -22,5 +22,7 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:textColor="#ffffff"
-        android:background="#f60808" />
+        android:background="#f60808"
+        android:textStyle="bold"
+        android:textSize="20dp" />
 </RelativeLayout>
