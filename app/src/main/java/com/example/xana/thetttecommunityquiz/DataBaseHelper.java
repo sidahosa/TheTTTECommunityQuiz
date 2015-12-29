@@ -47,7 +47,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     + " TEXT, " + KEY_ANSWER+ " TEXT, "+KEY_OPTA +" TEXT, "
                     +KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT)";
             db.execSQL(sql);
-            addQuestions();
+            /*addQuestions();*/
     }
 
     @Override
