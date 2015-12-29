@@ -23,13 +23,31 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
     /* Constructor for Database Helper */
 
+    // tasks table name
+    private static final String TABLE_QUEST = "quest";
+    // tasks Table Columns names
+    private static final String KEY_ID = "id";
+    private static final String KEY_QUES = "question";
+    private static final String KEY_ANSWER = "answer"; //correct option
+    private static final String KEY_OPTA= "opta"; //option a
+    private static final String KEY_OPTB= "optb"; //option b
+    private static final String KEY_OPTC= "optc"; //option c
+    private SQLiteDatabase dbase;
+
     public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, NAME, factory, VERSION);
+        super(context, NAME, null, VERSION);
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db) {
+    public void onCreate(SQLiteDatabase db){
 
+            dbase = db;
+            String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
+                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUES
+                    + " TEXT, " + KEY_ANSWER+ " TEXT, "+KEY_OPTA +" TEXT, "
+                    +KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT)";
+            db.execSQL(sql);
+            addQuestions();
     }
 
     @Override
