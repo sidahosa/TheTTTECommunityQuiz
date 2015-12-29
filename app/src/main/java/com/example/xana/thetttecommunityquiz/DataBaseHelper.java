@@ -35,19 +35,21 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private SQLiteDatabase dbase;
 
     public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, NAME, null, VERSION);
+        super(context, NAME, factory, VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db){
 
-            dbase = db;
+            database = db;
             String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
                     + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUES
                     + " TEXT, " + KEY_ANSWER+ " TEXT, "+KEY_OPTA +" TEXT, "
                     +KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT)";
             db.execSQL(sql);
             /*addQuestions();*/
+
+            /*New Comment*/
     }
 
     @Override
