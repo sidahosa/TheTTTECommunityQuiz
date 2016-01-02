@@ -46,8 +46,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String KEY_OPTD = "optd"; //option d
     private SQLiteDatabase dbase;
 
-    public DataBaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, NAME, factory, VERSION);
+    public DataBaseHelper(Context c) {
+        super(c, NAME, null, VERSION);
     }
 
     @Override
@@ -105,7 +105,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         List<Questions> questionsList = new ArrayList<Questions>();
 
-        String select = "SELECT * FROM" + TABLE_QUEST;
+
         dbase = this.getReadableDatabase();
 
         for (Map.Entry<Integer, Questions> mapEntry :

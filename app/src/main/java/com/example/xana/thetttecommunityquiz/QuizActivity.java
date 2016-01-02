@@ -8,8 +8,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /* Modified by MA 12/31 */
 
@@ -17,12 +22,34 @@ public class QuizActivity extends AppCompatActivity {
 
     TextView final_result;
 
+    List<Questions> listofQuestions;
+    int score = 0;
+    int questionID = 0;
+    Questions curr;
+    TextView questionText;
+    RadioButton button1, button2, button3, button4;
+    Button gotoNext;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        DataBaseHelper dbhelper = new DataBaseHelper(this);
+
+        listofQuestions = dbhelper.getEachQuestion();
+
+        curr = listofQuestions.get(questionID);
+
+        questionText = (TextView)findViewById(R.id.textView);
+        button1 = (RadioButton)findViewById(R.id.radioButton);
+        button2 = (RadioButton)findViewById(R.id.radioButton2);
+        button3 = (RadioButton)findViewById(R.id.radioButton3);
+        button4 = (RadioButton)findViewById(R.id.radioButton4);
+        gotoNext = (Button)findViewById(R.id.goto_nextButton);
+        setQuestionView();
 
         final_result = (TextView) findViewById(R.id.result);
 
@@ -40,7 +67,32 @@ public class QuizActivity extends AppCompatActivity {
         });
     }
 
+    private void setQuestionView() {
+
+        questionText.setText(curr.askQuestion());
+
+        ArrayList<String> arr = new ArrayList<String>();
+
+        arr.add(curr.getCorrectanswer());
+        arr.add(curr.getFalseanswer1());
+        arr.add(curr.getFalseanswer2());
+        arr.add(curr.getFalseanswer3());
+
+        Collections.shuffle(arr);
+
+        button1.setText(arr.get(0));
+        button2.setText(arr.get(1));
+        button3.setText(arr.get(2));
+        button4.setText(arr.get(3));
+        questionID++;
+
+        arr.clear();
+
+
+    }
+
     public void chooseAnswer(View view) {
+
 
         boolean check = ((RadioButton) view).isChecked();
 
@@ -68,6 +120,13 @@ public class QuizActivity extends AppCompatActivity {
                 case R.id.radioButton4:
                     final_result.setText("Your chose CHOICE4");
                     final_result.setEnabled(true);
+                    break;
+
+                case R.id.goto_nextButton:
+                    final_result.setText("Going to next question...");
+                    final_result.setEnabled(true);
+                    curr = listofQuestions.get(questionID);
+                    setQuestionView();
                     break;
             }
 
