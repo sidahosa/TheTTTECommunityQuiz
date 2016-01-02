@@ -5,18 +5,30 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.RadioButton;
+import android.widget.TextView;
 
-public class homepage extends AppCompatActivity {
+/* Modified by MA 12/31 */
+
+public class QuizActivity extends AppCompatActivity {
+
+    TextView final_result;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homepage);
+        setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        final_result = (TextView) findViewById(R.id.result);
+
+        /*Hides TextView*/
+
+        final_result.setEnabled(false);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -26,6 +38,45 @@ public class homepage extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+    }
+
+    public void chooseAnswer(View view) {
+
+        boolean check = ((RadioButton) view).isChecked();
+
+        /*Print specific messages for each case*/
+
+        if (check) {
+
+            switch (view.getId()) {
+
+                case R.id.radioButton:
+                    final_result.setText("Your chose CHOICE1");
+                    final_result.setEnabled(true);
+                    break;
+
+                case R.id.radioButton2:
+                    final_result.setText("Your chose CHOICE2");
+                    final_result.setEnabled(true);
+                    break;
+
+                case R.id.radioButton3:
+                    final_result.setText("Your chose CHOICE3");
+                    final_result.setEnabled(true);
+                    break;
+
+                case R.id.radioButton4:
+                    final_result.setText("Your chose CHOICE4");
+                    final_result.setEnabled(true);
+                    break;
+            }
+
+        } else {
+
+            final_result.setEnabled(false);
+
+        }
+
     }
 
     @Override

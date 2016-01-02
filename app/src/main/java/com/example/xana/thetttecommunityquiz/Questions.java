@@ -15,7 +15,16 @@ public class Questions {
     private String falseanswer3;
     private String[] listofanswers;
 
+    /*Each question needs some type of identifier - MA */
+    private int ID;
+
     public Questions(String ques, String correct, String false1, String false2, String false3){
+
+        /*Default value = 0
+        *  - MA
+        */
+
+        ID = 0;
         question = ques;
         correctanswer = correct;
         falseanswer1 = false1;
@@ -23,6 +32,12 @@ public class Questions {
         falseanswer3 = false3;
         listofanswers = new String[4];
         organizedanswers();
+    }
+
+    /*Get the identifier - MA*/
+
+    public int getID() {
+        return ID;
     }
 
     /**
@@ -56,6 +71,28 @@ public class Questions {
     public String getCorrectanswer(){
         return correctanswer;
     }
+
+    /*Make/Change the ID - MA*/
+
+    public void makeID(int IDNo) {
+        ID = IDNo;
+    }
+
+    /* Need to access each answer field  - MA */
+
+    public String getFalseanswer1() {
+        return falseanswer1;
+    }
+
+    public String getFalseanswer2() {
+        return falseanswer2;
+    }
+
+    public String getFalseanswer3() {
+        return falseanswer3;
+    }
+
+    /* This section may not be necessary. - MA */
 
     public String printeverything(){
         return question + "\n" + "A. " + listofanswers[0] + "\n" + "B. " + listofanswers[1] + "\n" +

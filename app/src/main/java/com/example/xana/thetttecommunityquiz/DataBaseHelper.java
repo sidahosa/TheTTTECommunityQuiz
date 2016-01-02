@@ -41,7 +41,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db){
 
-            database = db;
+        dbase = db;
             String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
                     + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUES
                     + " TEXT, " + KEY_ANSWER+ " TEXT, "+KEY_OPTA +" TEXT, "
