@@ -49,6 +49,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     + KEY_OPTB + " TEXT, " + KEY_OPTC + " TEXT, " + KEY_OPTD + " TEXT)";
             db.execSQL(sql);
             /*addQuestions();*/
+        //
         ListofQuestions temp = new ListofQuestions("EE93 Questions.txt");
             /*New Comment*/
     }
