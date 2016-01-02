@@ -101,7 +101,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public List<Questions> getQuestions() {
+    public List<Questions> getEachQuestion() {
 
         List<Questions> questionsList = new ArrayList<Questions>();
 
