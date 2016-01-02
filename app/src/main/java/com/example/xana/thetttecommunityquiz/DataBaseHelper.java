@@ -5,6 +5,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
 /**
  * The purpose of this class is to create a Database Helper that will contain
  * the TTTECommunityQuiz app's question data.
@@ -13,6 +17,12 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 
 public class DataBaseHelper extends SQLiteOpenHelper {
+
+    /* This ListofQuestions contains each of the quiz questions and their respective
+    *  answer choices
+    */
+
+    private static ListofQuestions temp = new ListofQuestions("EE93 Questions.txt");
 
     /* Name of DataBaseHelper */
 
@@ -44,14 +54,20 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
 
         dbase = db;
+
         String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUES
                 + " TEXT, " + KEY_ANSWER + " TEXT, " + KEY_OPTA + " TEXT, "
                 + KEY_OPTB + " TEXT, " + KEY_OPTC + " TEXT, " + KEY_OPTD + " TEXT)";
         db.execSQL(sql);
             /*addQuestions();*/
-        //
-        ListofQuestions temp = new ListofQuestions("EE93 Questions.txt");
+
+        for (Map.Entry<Integer, Questions> mapEntry: temp.globalQuestions.entrySet() ) {
+            insertQuestion(mapEntry.getValue());
+        }
+
+        db.close();
+
             /*New Comment*/
     }
 
@@ -61,7 +77,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         This is the database that will hold the question and answers
         */
 
-        SQLiteDatabase newDB = this.getWritableDatabase();
+        SQLiteDatabase thisDB = this.getWritableDatabase();
 
             /* Create an object to put the question and
             *  answers in.
@@ -80,9 +96,30 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         toInsert.put(KEY_OPTB, q.getFalseanswer2());
         toInsert.put(KEY_OPTC, q.getFalseanswer3());
 
-            /* Insert to first row */
-        dbase.insert(TABLE_QUEST, null, toInsert);
+            /* Insert this row to dbase */
+        thisDB.insert(TABLE_QUEST, null, toInsert);
     }
+
+
+    public List<Questions> getQuestions() {
+
+        List<Questions> questionsList = new ArrayList<Questions>();
+
+        String select = "SELECT * FROM" + TABLE_QUEST;
+        dbase = this.getReadableDatabase();
+
+        for (Map.Entry<Integer, Questions> mapEntry :
+                temp.globalQuestions.entrySet() ) {
+
+            questionsList.add(mapEntry.getValue());
+
+        }
+
+        return questionsList;
+
+    }
+
+
 
 
 
