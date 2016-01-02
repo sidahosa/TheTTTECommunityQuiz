@@ -1,5 +1,6 @@
 package com.example.xana.thetttecommunityquiz;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -40,19 +41,52 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     }
 
     @Override
-    public void onCreate(SQLiteDatabase db){
+    public void onCreate(SQLiteDatabase db) {
 
         dbase = db;
-            String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
-                    + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUES
-                    + " TEXT, " + KEY_ANSWER + " TEXT, " + KEY_OPTA + " TEXT, "
-                    + KEY_OPTB + " TEXT, " + KEY_OPTC + " TEXT, " + KEY_OPTD + " TEXT)";
-            db.execSQL(sql);
+        String sql = "CREATE TABLE IF NOT EXISTS " + TABLE_QUEST + " ( "
+                + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + KEY_QUES
+                + " TEXT, " + KEY_ANSWER + " TEXT, " + KEY_OPTA + " TEXT, "
+                + KEY_OPTB + " TEXT, " + KEY_OPTC + " TEXT, " + KEY_OPTD + " TEXT)";
+        db.execSQL(sql);
             /*addQuestions();*/
         //
         ListofQuestions temp = new ListofQuestions("EE93 Questions.txt");
             /*New Comment*/
     }
+
+    public void insertQuestion(Questions q) {
+
+        /*
+        This is the database that will hold the question and answers
+        */
+
+        SQLiteDatabase newDB = this.getWritableDatabase();
+
+            /* Create an object to put the question and
+            *  answers in.
+            */
+
+        ContentValues toInsert = new ContentValues();
+
+            /* Insert the question */
+
+        toInsert.put(KEY_QUES, q.askQuestion());
+
+            /*Insert the answers*/
+
+        toInsert.put(KEY_ANSWER, q.getCorrectanswer());
+        toInsert.put(KEY_OPTA, q.getFalseanswer1());
+        toInsert.put(KEY_OPTB, q.getFalseanswer2());
+        toInsert.put(KEY_OPTC, q.getFalseanswer3());
+
+            /* Insert to first row */
+        dbase.insert(TABLE_QUEST, null, toInsert);
+    }
+
+
+
+
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
