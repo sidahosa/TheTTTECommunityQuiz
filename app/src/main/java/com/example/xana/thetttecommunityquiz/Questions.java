@@ -61,17 +61,9 @@ public class Questions {
     /**
      * Return the list of possible answers as an String array
      */
-    public String[] getListofanswers(){
+    public String[] getListofanswers() {
         return listofanswers;
     }
-
-    /*
-    Returns the actual correct answer
-     */
-    public String getCorrectanswer(){
-        return correctanswer;
-    }
-
     /*Make/Change the ID - MA*/
 
     public void makeID(int IDNo) {
@@ -88,16 +80,12 @@ public class Questions {
         return falseanswer2;
     }
 
-    public String getFalseanswer3() {
-        return falseanswer3;
+    public String getFalseanswer3() { return falseanswer3; }
+   /* Returns the actual correct answer */
+    public String getCorrectanswer(){
+        return correctanswer;
     }
 
-    /* This section may not be necessary. - MA */
-
-    public String printeverything(){
-        return question + "\n" + "A. " + listofanswers[0] + "\n" + "B. " + listofanswers[1] + "\n" +
-                "C. " + listofanswers[2] + "\n" + "D. " + listofanswers[3] + "\n";
-    }
 
 
 }

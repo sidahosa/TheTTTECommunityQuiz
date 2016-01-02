@@ -4,6 +4,8 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.List;
+
 /**
  * The purpose of this class is to create a Database Helper that will contain
  * the TTTECommunityQuiz app's question data.
@@ -48,12 +50,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                     +KEY_OPTB +" TEXT, "+KEY_OPTC+" TEXT)";
             db.execSQL(sql);
             /*addQuestions();*/
-
+        ListofQuestions temp = new ListofQuestions("EE93 Questions.txt");
             /*New Comment*/
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUEST);
+        onCreate(db);
     }
 }

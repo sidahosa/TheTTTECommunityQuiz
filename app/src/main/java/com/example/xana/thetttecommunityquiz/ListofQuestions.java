@@ -16,6 +16,7 @@ import java.util.TreeMap;
  */
 public class ListofQuestions {
     private TreeMap<Integer, Questions> questionsTreeMap = new TreeMap<>();
+    public static TreeMap <Integer, Questions> globalQuestions = new TreeMap<>();
     int counter = 0;                  // Integer used for randomizing the questions
     private String YouTuberSelected;  // YouTube Admin selected from selection screen
 
@@ -26,8 +27,8 @@ public class ListofQuestions {
     public ListofQuestions(String YouTuber) {
         YouTuberSelected = YouTuber;
         try {
-            Scanner fileRead = new Scanner(new File(YouTuberSelected));
-            filereader(fileRead);
+            Scanner filetoRead = new Scanner(new File(YouTuberSelected));
+            filereader(filetoRead);
         } catch (FileNotFoundException e) {
         }
     }
@@ -80,7 +81,7 @@ public class ListofQuestions {
         while (numofquestions > 0) {
             int index = rand.nextInt(list.size());
             Questions ask = questionsTreeMap.get(list.remove(index));
-            printquestion(ask);
+            globalQuestions.put(numofquestions, ask);
             numofquestions--;
         }
     }
@@ -109,11 +110,6 @@ public class ListofQuestions {
             int index = rand.nextInt(list.size());
             list2.add(list.remove(index));
         }
-        System.out.println("A. " + temp[list2.get(0)]);
-        System.out.println("B. " + temp[list2.get(1)]);
-        System.out.println("C. " + temp[list2.get(2)]);
-        System.out.println("D. " + temp[list2.get(3)]);
-        System.out.println();
     }
 }
 
