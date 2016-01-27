@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.thetttecommunity.tttecommunityquizgame.quizscreen"
+    tools:showIn="@layout/activity_quizscreen"
+    android:background="#f2f2f2">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="QUESTION"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:gravity="center_horizontal"
+        android:background="#ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="24sp" />
+
+    <RadioGroup
+        android:id="@+id/radioBro"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="92dp">
+
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_below="@+id/textView"-->
+
+        <RadioButton
+            android:id="@+id/radioButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="49dp"
+            android:checked="true"
+            android:text="Radiobutton1"
+            android:background="#0461f5"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <!--android:onClick="chooseAnswer"-->
+
+        <RadioButton
+            android:id="@+id/radioButton2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Radiobutton2"
+            android:checked="false"
+            android:background="#fefffe"
+            android:textColor="#040404"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="radiobutton3"
+            android:background="#0461f5"
+            android:textColor="#ffffff"
+            android:textSize="20sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="radiobutton4"
+            android:background="#fefefe"
+            android:textColor="#040403"
+            android:textSize="20sp" />
+
+    </RadioGroup>
+
+    <ImageButton
+        android:id="@+id/next_button"
+        android:layout_width="220dp"
+        android:layout_height="110dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/ccnext"
+        android:contentDescription="@string/app_name"
+        android:layout_centerHorizontal="true" />
+
+    <!--stuff to add back in-->
+    <!--android:layout_below="@+id/radioBro"-->
+    <!--android:layout_marginTop="56dp"-->
+
+</RelativeLayout>

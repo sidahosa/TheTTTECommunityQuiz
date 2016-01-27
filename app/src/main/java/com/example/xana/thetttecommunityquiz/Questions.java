@@ -13,10 +13,21 @@ public class Questions {
     private String falseanswer1;
     private String falseanswer2;
     private String falseanswer3;
+    private String falseanswer4;
     private String[] listofanswers;
 
     /*Each question needs some type of identifier - MA */
     private int ID;
+
+    public Questions(){
+        ID = 0;
+        question = "";
+        correctanswer = "";
+        falseanswer1 = "";
+        falseanswer2 = "";
+        falseanswer3 = "";
+        falseanswer4 = "";
+    }
 
     public Questions(String ques, String correct, String false1, String false2, String false3){
 
@@ -30,6 +41,7 @@ public class Questions {
         falseanswer1 = false1;
         falseanswer2 = false2;
         falseanswer3 = false3;
+        falseanswer4 = correctanswer;
         listofanswers = new String[4];
         organizedanswers();
     }
@@ -81,9 +93,40 @@ public class Questions {
     }
 
     public String getFalseanswer3() { return falseanswer3; }
-   /* Returns the actual correct answer */
+    /* Returns the actual correct answer */
     public String getCorrectanswer(){
         return correctanswer;
+    }
+
+    public void setQuestion(String q){
+        question = q;
+    }
+
+    public void setID(int i){
+        ID = i;
+    }
+
+    public void setCorrectanswer(String correct){
+        correctanswer = correct;
+    }
+
+    public void setFalseanswer1(String false1){
+        falseanswer1 = false1;
+    }
+
+    public void setFalseanswer2(String false2){
+        falseanswer2 = false2;
+    }
+
+    public void setFalseanswer3(String false3){
+        falseanswer3 = false3;
+    }
+    public void setFalseanswer4(String false4){
+        falseanswer4 = false4;
+    }
+
+    public String getFalseanswer4(){
+        return falseanswer4;
     }
 
 

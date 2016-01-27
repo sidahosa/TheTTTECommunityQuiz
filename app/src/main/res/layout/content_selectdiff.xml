@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.xana.thetttecommunityquiz.selectdiff"
+    tools:showIn="@layout/activity_selectdiff"
+    android:background="@drawable/selectdiff">
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:id="@+id/question5"
+        android:layout_marginTop="102dp"
+        android:background="#00ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginLeft="12dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:id="@+id/questions10"
+        android:layout_alignTop="@+id/question5"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/question5"
+        android:background="#00ffffff" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:id="@+id/questions15"
+        android:layout_centerVertical="true"
+        android:background="#00ffffff"
+        android:layout_alignRight="@+id/question5"
+        android:layout_alignEnd="@+id/question5"
+        android:layout_marginBottom="10dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:id="@+id/questions20"
+        android:background="#00ffffff"
+        android:layout_centerVertical="true"
+        android:layout_alignRight="@+id/questions10"
+        android:layout_alignEnd="@+id/questions10"
+        android:layout_marginRight="10dp"
+        android:layout_marginEnd="10dp"/>
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:id="@+id/questions25"
+        android:background="#00ffffff"
+        android:layout_below="@+id/questions15"
+        android:layout_alignRight="@+id/questions15"
+        android:layout_alignEnd="@+id/questions15"
+        android:layout_marginTop="38dp" />
+
+    <Button
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:id="@+id/questions30"
+        android:background="#00ffffff"
+        android:layout_alignTop="@+id/questions25"
+        android:layout_alignLeft="@+id/questions20"
+        android:layout_alignStart="@+id/questions20" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/questions15"
+        android:layout_alignRight="@+id/question5"
+        android:layout_alignEnd="@+id/question5"
+        android:layout_alignTop="@+id/question5" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:layout_alignTop="@+id/question5"
+        android:contentDescription="@string/st"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/imageView"
+        android:layout_alignLeft="@+id/questions20"
+        android:layout_alignStart="@+id/questions20" />
+</RelativeLayout>

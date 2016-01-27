@@ -11,20 +11,33 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.xana.thetttecommunityquiz.homepage"
     tools:showIn="@layout/activity_homepage"
-    android:background="@drawable/main_homepage_lite">
+    android:background="@drawable/home3">
 
     <Button
-        android:layout_width="150dp"
-        android:layout_height="50dp"
-        android:text="Play Now"
+        android:layout_width="245dp"
+        android:layout_height="87dp"
         android:id="@+id/play_now"
-        android:layout_marginBottom="165dp"
+        android:layout_marginBottom="85dp"
+        android:textColor="#ffffff"
+        android:background="#fb0303"
+        android:textStyle="bold"
+        android:textSize="32dp"
+        android:onClick="gotoQuiz"
+        android:text="Play Now"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
-        android:background="#f60808"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:onClick="gotoQuiz" />
+        android:theme="@style/Base.Animation.AppCompat.Dialog" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/subbutton"
+        android:onClick="goToSubscribe"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:background="#00ffffff"
+        android:layout_alignParentBottom="true" />
 
 </RelativeLayout>

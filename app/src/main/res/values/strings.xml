@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TheTTTECommunityQuiz</string>
+    <string name="app_name">The TTTE Community Quiz Game</string>
     <string name="homepageActivity">HomePageActivity</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_quiz">QuizActivity</string>
@@ -9,5 +9,10 @@
     <string name="choice2"></string>
     <string name="choice3"></string>
     <string name="choice4"></string>
+    <string name="title_activity_selection">selection</string>
+    <string name="title_activity_quizscreen">quizscreen</string>
+    <string name="title_activity_selectdiff">selectdiff</string>
+    <string name="title_activity_results">Results</string>
+    <string name="st">string</string>
 
 </resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.example.xana.thetttecommunityquiz.selection"
+    tools:showIn="@layout/activity_selection"
+    android:background="@drawable/selection1">
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:id="@+id/ee93startquiz"
+        android:layout_marginTop="106dp"
+        android:background="#00ffffff"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="23dp"
+        android:layout_marginLeft="23dp" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:id="@+id/d199startquiz"
+        android:background="#00ffffff"
+        android:layout_alignTop="@+id/ee93startquiz"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="34dp"
+        android:layout_marginEnd="34dp"/>
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:id="@+id/pe619startquiz"
+        android:background="#00ffffff"
+        android:layout_marginTop="46dp"
+        android:layout_below="@+id/ee93startquiz"
+        android:layout_alignLeft="@+id/ee93startquiz"
+        android:layout_alignStart="@+id/ee93startquiz" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:id="@+id/skjstartquiz"
+        android:background="#00ffffff"
+        android:layout_alignTop="@+id/pe619startquiz"
+        android:layout_alignLeft="@+id/d199startquiz"
+        android:layout_alignStart="@+id/d199startquiz" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:background="#00ffffff"
+        android:id="@+id/allstartquiz"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+</RelativeLayout>
