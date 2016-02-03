@@ -1,6 +1,7 @@
 package com.example.xana.thetttecommunityquiz;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +13,7 @@ public class selectdiff extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectdiff);
+        final MediaPlayer theme = MediaPlayer.create(this, R.raw.guard_whistle2);
 
         Button select5 = (Button) findViewById(R.id.question5);
         select5.setOnClickListener(new View.OnClickListener() {
@@ -19,6 +21,7 @@ public class selectdiff extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(selectdiff.this, quizscreen.class);
                 startActivity(intent);
+                if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 5;
                 selectdiff.this.finish();
             }
@@ -30,6 +33,7 @@ public class selectdiff extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(selectdiff.this, quizscreen.class);
                 startActivity(intent);
+                if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 10;
                 selectdiff.this.finish();
             }
@@ -41,6 +45,7 @@ public class selectdiff extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(selectdiff.this, quizscreen.class);
                 startActivity(intent);
+                if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 15;
                 selectdiff.this.finish();
             }
@@ -52,6 +57,7 @@ public class selectdiff extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(selectdiff.this, quizscreen.class);
                 startActivity(intent);
+                if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 20;
                 selectdiff.this.finish();
             }
@@ -63,6 +69,7 @@ public class selectdiff extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(selectdiff.this, quizscreen.class);
                 startActivity(intent);
+                if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 25;
                 selectdiff.this.finish();
             }
@@ -74,6 +81,7 @@ public class selectdiff extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(selectdiff.this, quizscreen.class);
                 startActivity(intent);
+                if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 30;
                 selectdiff.this.finish();
             }

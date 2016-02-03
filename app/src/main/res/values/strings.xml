@@ -14,5 +14,6 @@
     <string name="title_activity_selectdiff">selectdiff</string>
     <string name="title_activity_results">Results</string>
     <string name="st">string</string>
+    <string name="title_activity_answerspage">answerspage</string>
 
 </resources>

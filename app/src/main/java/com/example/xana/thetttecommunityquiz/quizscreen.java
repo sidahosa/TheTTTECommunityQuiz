@@ -2,6 +2,7 @@ package com.example.xana.thetttecommunityquiz;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.TreeMap;
 
 public class quizscreen extends Activity {
 
@@ -27,6 +29,8 @@ public class quizscreen extends Activity {
     Questions curr;
     TextView questionText;
     ImageButton gotoNext;
+    MediaPlayer theme;
+    public static TreeMap <String, String> answers = new TreeMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,14 +44,64 @@ public class quizscreen extends Activity {
 
         if (AdminPicked.selectedAdmin == 199) {
             listofQuestions = dbHepler.getAllDieselD199Questions();
+
+            if(AdminPicked.music == 1){
+                theme = MediaPlayer.create(quizscreen.this, R.raw.d199_theme);
+                theme.start();
+                theme.setLooping(true);
+            }
+
         } else if (AdminPicked.selectedAdmin == 93) {
             listofQuestions = dbHepler.getAllEE93Questions();
+            if(AdminPicked.music == 1){
+                theme = MediaPlayer.create(quizscreen.this, R.raw.ee93_theme);
+                theme.start();
+                theme.setLooping(true);
+            }
         } else if (AdminPicked.selectedAdmin == 619) {
             listofQuestions = dbHepler.getAllPe619Questions();
+
+            if (AdminPicked.music == 1) {
+                switch (AdminPicked.numberofquestions) {
+                    case 5:
+                        theme = MediaPlayer.create(quizscreen.this, R.raw.pe619_5_questions);
+                        theme.start();
+                        theme.setLooping(true);
+                        break;
+                    case 10:
+                    case 15:
+                        theme = MediaPlayer.create(quizscreen.this, R.raw.pe619_10_15);
+                        theme.start();
+                        theme.setLooping(true);
+                        break;
+                    case 20:
+                    case 25:
+                    case 30:
+                        theme = MediaPlayer.create(quizscreen.this, R.raw.pe619_questions_20_30);
+                        theme.start();
+                        theme.setLooping(true);
+                        break;
+                }
+            }
+
         } else if (AdminPicked.selectedAdmin == 1) {
-            listofQuestions = dbHepler.getAllSKJQuestions();
+
+
+            if(AdminPicked.music == 1){
+                listofQuestions = dbHepler.getAllSKJQuestions();
+                theme = MediaPlayer.create(quizscreen.this, R.raw.skj_theme);
+                theme.start();
+                theme.setLooping(true);
+            }
+
         } else if (AdminPicked.selectedAdmin == 4) {
             listofQuestions = dbHepler.getAllAdminsQuestions();
+
+            if(AdminPicked.music == 1){
+                theme = MediaPlayer.create(quizscreen.this, R.raw.trying_ttte_theme);
+                theme.start();
+                theme.setLooping(true);
+            }
         }
 
         curr = listofQuestions.get(questionID);
@@ -68,9 +122,15 @@ public class quizscreen extends Activity {
                 RadioGroup grp = (RadioGroup) findViewById(R.id.radioBro);
                 RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
                 Log.d("your ans", curr.getCorrectanswer() + " " + answer.getText());
+
+                //Answers to the questions
+                answers.put(curr.askQuestion(), curr.getCorrectanswer());
+
                 if (curr.getCorrectanswer().equals(answer.getText())) {
                     score++;
                     Log.d("score", "Your score" + score);
+                } else {
+                    if(AdminPicked.negative_points_mode == -1) score--;
                 }
                 if(questionID < AdminPicked.numberofquestions){
                     curr = listofQuestions.get(questionID);
@@ -80,6 +140,7 @@ public class quizscreen extends Activity {
                     Bundle b = new Bundle();
                     b.putInt("score", score); //Your score
                     intent.putExtras(b); //Put your score to your next Intent
+                    if(theme != null) theme.release();
                     startActivity(intent);
                     finish();
                 }

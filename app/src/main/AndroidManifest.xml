@@ -33,6 +33,10 @@
         <activity
             android:name=".Results"
             android:label="@string/title_activity_results"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".answerspage"
+            android:label="@string/title_activity_answerspage"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 

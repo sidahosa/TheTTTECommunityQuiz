@@ -1,6 +1,7 @@
 package com.example.xana.thetttecommunityquiz;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -21,6 +22,7 @@ public class homepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+        final MediaPlayer sound_theme = MediaPlayer.create(this, R.raw.signal_change);
 
         Button select = (Button) findViewById(R.id.play_now);
         select.setOnClickListener(new View.OnClickListener() {
@@ -28,6 +30,9 @@ public class homepageActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Intent intent = new Intent(homepageActivity.this, selection.class);
                 homepageActivity.this.finish();
+                if (AdminPicked.music == 1) {
+                    sound_theme.start();
+                }
                 startActivity(intent);
             }
         });

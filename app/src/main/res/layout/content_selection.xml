@@ -62,4 +62,27 @@
         android:id="@+id/allstartquiz"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Sound"
+        android:id="@+id/sound"
+        android:textColor="#ffffff"
+        android:background="@drawable/bg_button"
+        android:layout_alignTop="@+id/allstartquiz"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:text="Negative Points Mode"
+        android:id="@+id/negative"
+        android:textColor="#ffffff"
+        android:background="@drawable/bg_button"
+        android:layout_alignTop="@+id/allstartquiz"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textSize="12dp" />
 </RelativeLayout>
