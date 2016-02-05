@@ -11,22 +11,22 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.xana.thetttecommunityquiz.homepage"
     tools:showIn="@layout/activity_homepage"
-    android:background="@drawable/home3">
+    android:id="@+id/homepage_bg">
 
     <Button
         android:layout_width="245dp"
-        android:layout_height="87dp"
+        android:layout_height="82dp"
         android:id="@+id/play_now"
-        android:layout_marginBottom="85dp"
         android:textColor="#ffffff"
         android:background="#fb0303"
         android:textStyle="bold"
-        android:textSize="32dp"
+        android:textSize="32sp"
         android:onClick="gotoQuiz"
         android:text="Play Now"
-        android:layout_alignParentBottom="true"
+        android:theme="@style/Base.Animation.AppCompat.Dialog"
+        android:layout_above="@+id/subbutton"
         android:layout_centerHorizontal="true"
-        android:theme="@style/Base.Animation.AppCompat.Dialog" />
+        android:layout_marginBottom="40dp" />
 
     <Button
         android:layout_width="wrap_content"

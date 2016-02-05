@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -30,12 +31,14 @@ public class quizscreen extends Activity {
     TextView questionText;
     ImageButton gotoNext;
     MediaPlayer theme;
+    int length;
     public static TreeMap <String, String> answers = new TreeMap<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizscreen);
+        final RelativeLayout changingBg = (RelativeLayout) findViewById(R.id.quiz_bg);
 
         DataBaseHelper dbHepler = new DataBaseHelper(this);
 
@@ -44,7 +47,7 @@ public class quizscreen extends Activity {
 
         if (AdminPicked.selectedAdmin == 199) {
             listofQuestions = dbHepler.getAllDieselD199Questions();
-
+            changingBg.setBackgroundResource(R.drawable.d199_bg);
             if(AdminPicked.music == 1){
                 theme = MediaPlayer.create(quizscreen.this, R.raw.d199_theme);
                 theme.start();
@@ -53,6 +56,7 @@ public class quizscreen extends Activity {
 
         } else if (AdminPicked.selectedAdmin == 93) {
             listofQuestions = dbHepler.getAllEE93Questions();
+
             if(AdminPicked.music == 1){
                 theme = MediaPlayer.create(quizscreen.this, R.raw.ee93_theme);
                 theme.start();
@@ -60,6 +64,18 @@ public class quizscreen extends Activity {
             }
         } else if (AdminPicked.selectedAdmin == 619) {
             listofQuestions = dbHepler.getAllPe619Questions();
+
+            switch(AdminPicked.numberofquestions){
+                case 5:
+                case 10: changingBg.setBackgroundResource(R.drawable.pe619_bg1);
+                    break;
+                case 15:
+                case 20: changingBg.setBackgroundResource(R.drawable.pe619_bg2);
+                    break;
+                case 25:
+                case 30: changingBg.setBackgroundResource(R.drawable.pe619_bg3);
+                    break;
+            }
 
             if (AdminPicked.music == 1) {
                 switch (AdminPicked.numberofquestions) {
@@ -85,10 +101,11 @@ public class quizscreen extends Activity {
             }
 
         } else if (AdminPicked.selectedAdmin == 1) {
-
+            listofQuestions = dbHepler.getAllSKJQuestions();
+            changingBg.setBackgroundResource(R.drawable.skj_background);
 
             if(AdminPicked.music == 1){
-                listofQuestions = dbHepler.getAllSKJQuestions();
+
                 theme = MediaPlayer.create(quizscreen.this, R.raw.skj_theme);
                 theme.start();
                 theme.setLooping(true);
@@ -96,6 +113,7 @@ public class quizscreen extends Activity {
 
         } else if (AdminPicked.selectedAdmin == 4) {
             listofQuestions = dbHepler.getAllAdminsQuestions();
+            changingBg.setBackgroundResource(R.drawable.tracks1);
 
             if(AdminPicked.music == 1){
                 theme = MediaPlayer.create(quizscreen.this, R.raw.trying_ttte_theme);
@@ -115,6 +133,7 @@ public class quizscreen extends Activity {
         gotoNext = (ImageButton)findViewById(R.id.next_button);
 
         setQuestionView();
+
         gotoNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -123,8 +142,6 @@ public class quizscreen extends Activity {
                 RadioButton answer = (RadioButton) findViewById(grp.getCheckedRadioButtonId());
                 Log.d("your ans", curr.getCorrectanswer() + " " + answer.getText());
 
-                //Answers to the questions
-                answers.put(curr.askQuestion(), curr.getCorrectanswer());
 
                 if (curr.getCorrectanswer().equals(answer.getText())) {
                     score++;
@@ -136,13 +153,7 @@ public class quizscreen extends Activity {
                     curr = listofQuestions.get(questionID);
                     setQuestionView();
                 }else{
-                   Intent intent = new Intent(quizscreen.this, Results.class);
-                    Bundle b = new Bundle();
-                    b.putInt("score", score); //Your score
-                    intent.putExtras(b); //Put your score to your next Intent
-                    if(theme != null) theme.release();
-                    startActivity(intent);
-                    finish();
+                   endGame();
                 }
 
 
@@ -191,9 +202,51 @@ public class quizscreen extends Activity {
         button4.setText(arr.get(3));
         questionID++;
 
+        //Answers to the questions
+        if(AdminPicked.numberofquestions == 5 || AdminPicked.numberofquestions == 10){
+            answers.put(curr.askQuestion(), curr.getCorrectanswer());
+        } else {
+            answers = null;
+        }
+
         arr.clear();
+    }
 
+    private void endGame(){
+        Intent intent = new Intent(getApplicationContext(), Results.class);
+        Bundle b = new Bundle();
+        b.putInt("score", score); //Your score
+        intent.putExtras(b); //Put your score to your next Intent
+        if(theme != null) {
+            theme.release();
+        }
+        //listofQuestions.clear();
+        startActivity(intent);
+        finish();
+    }
 
+    @Override
+    public void onPause(){
+        super.onPause();
+
+        if (questionID == AdminPicked.numberofquestions){
+            endGame();
+        } else {
+            if (theme != null) {
+                theme.pause();
+                length = theme.getCurrentPosition();
+            }
+        }
+
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        if(theme != null) {
+            theme.seekTo(length);
+            theme.start();
+        }
     }
 
 }

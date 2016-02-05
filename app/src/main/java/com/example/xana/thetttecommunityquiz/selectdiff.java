@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 public class selectdiff extends AppCompatActivity {
 
@@ -13,17 +17,24 @@ public class selectdiff extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selectdiff);
+
         final MediaPlayer theme = MediaPlayer.create(this, R.raw.guard_whistle2);
+        final RelativeLayout bg = (RelativeLayout) findViewById(R.id.select_number);
+        bg.setBackgroundResource(R.drawable.selectdiff);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         Button select5 = (Button) findViewById(R.id.question5);
         select5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selectdiff.this, quizscreen.class);
+                Intent intent = new Intent(getApplicationContext(), quizscreen.class);
                 startActivity(intent);
                 if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 5;
-                selectdiff.this.finish();
+                finish();
             }
         });
 
@@ -31,11 +42,11 @@ public class selectdiff extends AppCompatActivity {
         select10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selectdiff.this, quizscreen.class);
+                Intent intent = new Intent(getApplicationContext(), quizscreen.class);
                 startActivity(intent);
                 if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 10;
-                selectdiff.this.finish();
+                finish();
             }
         });
 
@@ -43,11 +54,11 @@ public class selectdiff extends AppCompatActivity {
         select15.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selectdiff.this, quizscreen.class);
+                Intent intent = new Intent(getApplicationContext(), quizscreen.class);
                 startActivity(intent);
                 if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 15;
-                selectdiff.this.finish();
+                finish();
             }
         });
 
@@ -55,11 +66,11 @@ public class selectdiff extends AppCompatActivity {
         select20.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selectdiff.this, quizscreen.class);
+                Intent intent = new Intent(getApplicationContext(), quizscreen.class);
                 startActivity(intent);
                 if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 20;
-                selectdiff.this.finish();
+                finish();
             }
         });
 
@@ -67,11 +78,11 @@ public class selectdiff extends AppCompatActivity {
         select25.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selectdiff.this, quizscreen.class);
+                Intent intent = new Intent(getApplicationContext(), quizscreen.class);
                 startActivity(intent);
                 if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 25;
-                selectdiff.this.finish();
+                finish();
             }
         });
 
@@ -79,13 +90,25 @@ public class selectdiff extends AppCompatActivity {
         select30.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selectdiff.this, quizscreen.class);
+                Intent intent = new Intent(getApplicationContext(), quizscreen.class);
                 startActivity(intent);
                 if(AdminPicked.music == 1) theme.start();
                 AdminPicked.numberofquestions = 30;
-                selectdiff.this.finish();
+                finish();
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        this.finish();
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        this.finish();
     }
 
 }

@@ -5,10 +5,10 @@ android {
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.example.xana.thetttecommunityquiz"
+        applicationId "xana.thetttecommunityquiz"
         minSdkVersion 15
         targetSdkVersion 23
-        versionCode 1
+        versionCode 3
         versionName "1.0"
     }
     buildTypes {

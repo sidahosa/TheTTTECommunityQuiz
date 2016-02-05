@@ -9,7 +9,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.thetttecommunity.tttecommunityquizgame.quizscreen"
     tools:showIn="@layout/activity_quizscreen"
-    android:background="#f2f2f2">
+    android:id="@+id/quiz_bg">
 
     <TextView
         android:id="@+id/textView"

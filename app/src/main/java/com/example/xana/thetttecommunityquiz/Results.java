@@ -11,29 +11,29 @@ import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.squareup.picasso.Picasso;
 
 public class Results extends AppCompatActivity {
+    private MediaPlayer theme = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
-        final MediaPlayer home = MediaPlayer.create(this, R.raw.signal_change);
-        MediaPlayer theme;
 
-        Button goToResults = (Button) findViewById(R.id.continue_Button);
-        goToResults.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Results.this, answerspage.class);
-                finish();
-                if(AdminPicked.music == 1) home.start();
-                startActivity(intent);
-            }
-        });
+        final RelativeLayout bg = (RelativeLayout) findViewById(R.id.results_are_here);
+        bg.setBackgroundResource(R.drawable.tracks1);
+
+        final MediaPlayer home = MediaPlayer.create(this, R.raw.signal_change);
+
+        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView.loadAd(adRequest);
 
         //get rating bar object
         TextView user_score = (TextView) findViewById(R.id.score_user);
@@ -149,6 +149,18 @@ public class Results extends AppCompatActivity {
                 }
             }
         }
+
+        Button goToResults = (Button) findViewById(R.id.continue_Button);
+        goToResults.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Results.this, answerspage.class);
+                if(AdminPicked.music == 1) home.start();
+                startActivity(intent);
+                if(theme != null) theme.release();
+                finish();
+            }
+        });
 
         if (AdminPicked.numberofquestions == 5 && AdminPicked.selectedAdmin == 4) {
 
@@ -460,9 +472,8 @@ public class Results extends AppCompatActivity {
                         break;
                     case 10:
                         t.setText("Poor Douglas!");
-                        Picasso.with(this).load("http://i1036.photobucket." +
-                                "com/albums/a443/patsviper46/" +
-                                "TwinTrouble11_zpstkvt0rsh.png").fit().centerCrop().into(iv1);
+                        Picasso.with(this).load("http://i1036.photobucket.com/albums/a443/patsvip" +
+                                "er46/BreakVan14_zpsi1kk7zpo.png").fit().centerCrop().into(iv1);
                         break;
                     case 11:
                         t.setText("Poor Oliver!");
@@ -579,9 +590,8 @@ public class Results extends AppCompatActivity {
                         break;
                     case 10:
                         t.setText("Poor Douglas!");
-                        Picasso.with(this).load("http://i1036.photobucket." +
-                                "com/albums/a443/patsviper46/" +
-                                "TwinTrouble11_zpstkvt0rsh.png").fit().centerCrop().into(iv1);
+                        Picasso.with(this).load("http://i1036.photobucket.com/albums/a443/patsvip" +
+                                "er46/BreakVan14_zpsi1kk7zpo.png").fit().centerCrop().into(iv1);
                         break;
                     case 11:
                         t.setText("Poor Oliver!");
@@ -731,9 +741,8 @@ public class Results extends AppCompatActivity {
                         break;
                     case 10:
                         t.setText("Poor Douglas!");
-                        Picasso.with(this).load("http://i1036.photobucket." +
-                                "com/albums/a443/patsviper46/" +
-                                "TwinTrouble11_zpstkvt0rsh.png").fit().centerCrop().into(iv1);
+                        Picasso.with(this).load("http://i1036.photobucket.com/albums/a443/patsv" +
+                                "iper46/BreakVan14_zpsi1kk7zpo.png").fit().centerCrop().into(iv1);
                         break;
                     case 11:
                         t.setText("Poor Oliver!");
@@ -828,8 +837,6 @@ public class Results extends AppCompatActivity {
                 }
             }
         }
-
-
     }
 
     @Override

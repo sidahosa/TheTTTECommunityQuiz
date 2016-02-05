@@ -12,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 /*this was previously named "homepage.xml" but was modified by MA*/
 
@@ -22,18 +23,24 @@ public class homepageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homepage);
+
         final MediaPlayer sound_theme = MediaPlayer.create(this, R.raw.signal_change);
+        final RelativeLayout bg = (RelativeLayout) findViewById(R.id.homepage_bg);
+        bg.setBackgroundResource(R.drawable.home3);
 
         Button select = (Button) findViewById(R.id.play_now);
         select.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(homepageActivity.this, selection.class);
-                homepageActivity.this.finish();
+                Intent intent = new Intent(getApplicationContext(), selection.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 if (AdminPicked.music == 1) {
                     sound_theme.start();
                 }
+                bg.destroyDrawingCache();
                 startActivity(intent);
+                finish();
+
             }
         });
     }
@@ -68,5 +75,11 @@ public class homepageActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        this.finish();
     }
 }

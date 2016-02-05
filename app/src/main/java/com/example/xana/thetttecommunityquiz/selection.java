@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RelativeLayout;
 
 public class selection extends AppCompatActivity {
 
@@ -14,9 +15,13 @@ public class selection extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
-        final MediaPlayer pressedon = MediaPlayer.create(this, R.raw.guard_whistle);
 
+        AdminPicked.music = 1;
+        final MediaPlayer pressedon = MediaPlayer.create(this, R.raw.guard_whistle);
         final Button sounds = (Button) findViewById(R.id.sound);
+        final RelativeLayout bg = (RelativeLayout) findViewById(R.id.select_admin);
+        bg.setBackgroundResource(R.drawable.selection1);
+
         sounds.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -50,11 +55,11 @@ public class selection extends AppCompatActivity {
         selectd199.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selection.this, selectdiff.class);
+                Intent intent = new Intent(getApplicationContext(), selectdiff.class);
                 startActivity(intent);
                 if (AdminPicked.music == 1) pressedon.start();
                 AdminPicked.selectedAdmin = 199;
-                selection.this.finish();
+                finish();
             }
         });
 
@@ -62,11 +67,11 @@ public class selection extends AppCompatActivity {
         selectalladmins.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selection.this, selectdiff.class);
+                Intent intent = new Intent(getApplicationContext(), selectdiff.class);
                 startActivity(intent);
                 AdminPicked.selectedAdmin = 4;
                 if (AdminPicked.music == 1) pressedon.start();
-                selection.this.finish();
+                finish();
             }
         });
 
@@ -74,11 +79,11 @@ public class selection extends AppCompatActivity {
         selectee93.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selection.this, selectdiff.class);
+                Intent intent = new Intent(getApplicationContext(), selectdiff.class);
                 startActivity(intent);
                 AdminPicked.selectedAdmin = 93;
                 if (AdminPicked.music == 1){ pressedon.start();}
-                selection.this.finish();
+                finish();
             }
         });
 
@@ -86,11 +91,11 @@ public class selection extends AppCompatActivity {
         selectpe619.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selection.this, selectdiff.class);
+                Intent intent = new Intent(getApplicationContext(), selectdiff.class);
                 startActivity(intent);
                 AdminPicked.selectedAdmin = 619;
                 if (AdminPicked.music == 1){ pressedon.start(); }
-                selection.this.finish();
+                finish();
             }
         });
 
@@ -98,11 +103,11 @@ public class selection extends AppCompatActivity {
         selectskj.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(selection.this, selectdiff.class);
+                Intent intent = new Intent(getApplicationContext(), selectdiff.class);
                 startActivity(intent);
                 AdminPicked.selectedAdmin = 1;
                 if (AdminPicked.music == 1){ pressedon.start(); }
-                selection.this.finish();
+                finish();
             }
         });
 
@@ -110,8 +115,14 @@ public class selection extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(selection.this, homepageActivity.class);
-        startActivity(intent);
+        super.onBackPressed();
+        this.finish();
     }
+
+    /*@Override
+    public void onPause(){
+        super.onPause();
+        this.finish();
+    }*/
 
 }

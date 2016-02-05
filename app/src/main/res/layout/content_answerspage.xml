@@ -11,12 +11,24 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.xana.thetttecommunityquiz.answerspage"
     tools:showIn="@layout/activity_answerspage"
-    android:background="#cfcdcd">
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
+    android:background="#efefef">
 
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
+        <com.google.android.gms.ads.AdView
+            android:id="@+id/adView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            ads:adSize="BANNER"
+            ads:adUnitId="@string/banner_ad"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center_horizontal">
+        </com.google.android.gms.ads.AdView>
 
         <TextView
         android:layout_width="wrap_content"
@@ -28,7 +40,8 @@
         android:textSize="46sp"
         android:textStyle="bold"
         android:textColor="#ffffff"
-        android:background="#fc0606" />
+        android:background="#fc0606"
+            android:layout_marginTop="10dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -48,9 +61,9 @@
             android:layout_gravity="center_horizontal"
         android:text="Back to Homepage"
         android:textColor="#fefefe"
-        android:textSize="26sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        android:background="#0400fb"
+        android:background="@drawable/bg_button"
             android:layout_centerHorizontal="true" />
 
 

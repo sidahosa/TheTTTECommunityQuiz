@@ -11,7 +11,7 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.xana.thetttecommunityquiz.selection"
     tools:showIn="@layout/activity_selection"
-    android:background="@drawable/selection1">
+    android:id="@+id/select_admin">
 
     <Button
         android:layout_width="100dp"
