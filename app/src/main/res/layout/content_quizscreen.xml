@@ -18,11 +18,12 @@
         android:text="QUESTION"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:gravity="center_horizontal"
-        android:background="#ffffff"
+        android:background="#d6ffffff"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:textStyle="bold"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textColor="@android:color/holo_blue_dark"/>
 
     <RadioGroup
         android:id="@+id/radioBro"
@@ -42,7 +43,7 @@
             android:layout_marginTop="49dp"
             android:checked="true"
             android:text="Radiobutton1"
-            android:background="#0461f5"
+            android:background="@android:color/holo_blue_dark"
             android:textColor="#ffffff"
             android:textSize="20sp" />
 
@@ -63,7 +64,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="radiobutton3"
-            android:background="#0461f5"
+            android:background="@android:color/holo_blue_dark"
             android:textColor="#ffffff"
             android:textSize="20sp" />
 
@@ -76,17 +77,33 @@
             android:textColor="#040403"
             android:textSize="20sp" />
 
+
+
+
     </RadioGroup>
+
+    <Button
+        android:layout_width="120dp"
+        android:layout_height="50dp"
+        android:id="@+id/main_Menu"
+        android:textColor="#ffffff"
+        android:textSize="15dp"
+        android:text="Main Menu"
+        android:background="@drawable/bg_button"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/next_button"
+        android:layout_toEndOf="@+id/next_button"
+        android:layout_marginBottom="28dp"
+        android:layout_marginLeft="5dp" />
 
     <ImageButton
         android:id="@+id/next_button"
         android:layout_width="220dp"
-        android:layout_height="110dp"
+        android:layout_height="120dp"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="center_horizontal"
         android:background="@drawable/ccnext"
         android:contentDescription="@string/app_name"
-        android:layout_centerHorizontal="true" />
+        android:layout_marginLeft="-8dp" />
 
     <!--stuff to add back in-->
     <!--android:layout_below="@+id/radioBro"-->

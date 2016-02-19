@@ -18,7 +18,7 @@
         android:layout_height="82dp"
         android:id="@+id/play_now"
         android:textColor="#ffffff"
-        android:background="#fb0303"
+        android:background="@drawable/bg_button"
         android:textStyle="bold"
         android:textSize="32sp"
         android:onClick="gotoQuiz"

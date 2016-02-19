@@ -66,7 +66,7 @@
     <Button
         android:layout_width="100dp"
         android:layout_height="50dp"
-        android:text="Sound"
+        android:text="Sound off"
         android:id="@+id/sound"
         android:textColor="#ffffff"
         android:background="@drawable/bg_button"

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -32,30 +33,64 @@ public class quizscreen extends Activity {
     ImageButton gotoNext;
     MediaPlayer theme;
     int length;
+    int streak = 0;
+    static int longest_streak = 0;
     public static TreeMap <String, String> answers = new TreeMap<>();
+    boolean endGameNow = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quizscreen);
+
         final RelativeLayout changingBg = (RelativeLayout) findViewById(R.id.quiz_bg);
 
         DataBaseHelper dbHepler = new DataBaseHelper(this);
+
+        Button goingHome = (Button) findViewById(R.id.main_Menu);
+        goingHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), selection.class);
+                startActivity(intent);
+                if(answers != null) answers.clear();
+                else quizscreen.answers = new TreeMap<>();
+                AdminPicked.negative_points_mode = 1;
+                finish();
+            }
+        });
 
     /* Based on what button (Admin) the user selects,
         they will be prompted questions on that said admin */
 
         if (AdminPicked.selectedAdmin == 199) {
             listofQuestions = dbHepler.getAllDieselD199Questions();
-            changingBg.setBackgroundResource(R.drawable.d199_bg);
+            changingBg.setBackgroundResource(R.drawable.background_dieseld199);
             if(AdminPicked.music == 1){
-                theme = MediaPlayer.create(quizscreen.this, R.raw.d199_theme);
-                theme.start();
-                theme.setLooping(true);
+                switch (AdminPicked.numberofquestions){
+                    case 5:
+                        theme = MediaPlayer.create(quizscreen.this, R.raw.d199_theme);
+                        theme.start();
+                        theme.setLooping(true);
+                        break;
+                    case 10:
+                    case 15:
+                    case 20:
+                    case 25:
+                    case 30:
+                        theme = MediaPlayer.create(quizscreen.this, R.raw.the_busy_theme);
+                        theme.start();
+                        theme.setLooping(true);
+                        break;
+                }
+
             }
 
         } else if (AdminPicked.selectedAdmin == 93) {
             listofQuestions = dbHepler.getAllEE93Questions();
+            changingBg.setBackgroundResource(R.drawable.ee93_temp);
 
             if(AdminPicked.music == 1){
                 theme = MediaPlayer.create(quizscreen.this, R.raw.ee93_theme);
@@ -67,13 +102,13 @@ public class quizscreen extends Activity {
 
             switch(AdminPicked.numberofquestions){
                 case 5:
-                case 10: changingBg.setBackgroundResource(R.drawable.pe619_bg1);
+                case 10: changingBg.setBackgroundResource(R.drawable.pe619_bg1hd);
                     break;
                 case 15:
-                case 20: changingBg.setBackgroundResource(R.drawable.pe619_bg2);
+                case 20: changingBg.setBackgroundResource(R.drawable.pe619_bg2hd);
                     break;
                 case 25:
-                case 30: changingBg.setBackgroundResource(R.drawable.pe619_bg3);
+                case 30: changingBg.setBackgroundResource(R.drawable.pe619_bg3hd);
                     break;
             }
 
@@ -145,9 +180,14 @@ public class quizscreen extends Activity {
 
                 if (curr.getCorrectanswer().equals(answer.getText())) {
                     score++;
+                    streak++;
                     Log.d("score", "Your score" + score);
                 } else {
                     if(AdminPicked.negative_points_mode == -1) score--;
+                    if(streak > longest_streak) {
+                        longest_streak = streak;
+                        streak = 0;
+                    }
                 }
                 if(questionID < AdminPicked.numberofquestions){
                     curr = listofQuestions.get(questionID);
@@ -220,6 +260,11 @@ public class quizscreen extends Activity {
         if(theme != null) {
             theme.release();
         }
+        if(streak == AdminPicked.numberofquestions) longest_streak = streak;
+        else if (streak > longest_streak) {
+            longest_streak = streak;
+        }
+        endGameNow = true;
         //listofQuestions.clear();
         startActivity(intent);
         finish();
@@ -228,14 +273,11 @@ public class quizscreen extends Activity {
     @Override
     public void onPause(){
         super.onPause();
-
-        if (questionID == AdminPicked.numberofquestions){
-            endGame();
-        } else {
-            if (theme != null) {
+        if(endGameNow){
+            //Nothing
+        } else if (AdminPicked.music == 1) {
                 theme.pause();
                 length = theme.getCurrentPosition();
-            }
         }
 
     }
@@ -249,4 +291,7 @@ public class quizscreen extends Activity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+    }
 }

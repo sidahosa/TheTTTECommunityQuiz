@@ -1,6 +1,7 @@
 package com.example.xana.thetttecommunityquiz;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -16,7 +17,7 @@ public class selection extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_selection);
 
-        AdminPicked.music = 1;
+        //AdminPicked.music = 1;
         final MediaPlayer pressedon = MediaPlayer.create(this, R.raw.guard_whistle);
         final Button sounds = (Button) findViewById(R.id.sound);
         final RelativeLayout bg = (RelativeLayout) findViewById(R.id.select_admin);
@@ -118,11 +119,4 @@ public class selection extends AppCompatActivity {
         super.onBackPressed();
         this.finish();
     }
-
-    /*@Override
-    public void onPause(){
-        super.onPause();
-        this.finish();
-    }*/
-
 }

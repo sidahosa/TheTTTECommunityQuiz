@@ -2,13 +2,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    xmlns:ads="http://schemas.android.com/apk/res-auto"
+
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.example.xana.thetttecommunityquiz.selectdiff"
     tools:showIn="@layout/activity_selectdiff"
@@ -83,6 +84,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_above="@+id/questions15"
+        android:contentDescription="@string/accept"
         android:layout_alignRight="@+id/question5"
         android:layout_alignEnd="@+id/question5"
         android:layout_alignTop="@+id/question5" />
@@ -108,4 +110,5 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true">
     </com.google.android.gms.ads.AdView>
+
 </RelativeLayout>

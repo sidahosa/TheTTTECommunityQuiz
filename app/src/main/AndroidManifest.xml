@@ -9,12 +9,12 @@
         android:icon="@mipmap/ttte_icon_quiz"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+        android:theme="@style/redGiant">
         <activity
             android:name=".homepageActivity"
             android:label="@string/app_name"
-            android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:screenOrientation="portrait"
+            android:theme="@style/redGiant.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,28 +24,28 @@
         <activity
             android:name=".selection"
             android:label="@string/title_activity_selection"
-            android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/redGiant.NoActionBar" />
         <activity
             android:name=".quizscreen"
             android:label="@string/title_activity_quizscreen"
-            android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/redGiant.NoActionBar" />
         <activity
             android:name=".selectdiff"
             android:label="@string/title_activity_selectdiff"
-            android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/redGiant.NoActionBar" />
         <activity
             android:name=".Results"
             android:label="@string/title_activity_results"
-            android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:screenOrientation="portrait"
+            android:theme="@style/redGiant.NoActionBar" />
         <activity
             android:name=".answerspage"
             android:label="@string/title_activity_answerspage"
-            android:launchMode="singleInstance"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:screenOrientation="portrait"
+            android:theme="@style/redGiant.NoActionBar"></activity>
     </application>
 
 </manifest>

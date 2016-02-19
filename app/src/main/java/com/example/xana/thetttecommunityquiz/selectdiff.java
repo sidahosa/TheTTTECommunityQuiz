@@ -102,13 +102,8 @@ public class selectdiff extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        this.finish();
-    }
-
-    @Override
-    public void onPause(){
-        super.onPause();
-        this.finish();
+        Intent intent = new Intent(getApplicationContext(), selection.class);
+        startActivity(intent);
     }
 
 }

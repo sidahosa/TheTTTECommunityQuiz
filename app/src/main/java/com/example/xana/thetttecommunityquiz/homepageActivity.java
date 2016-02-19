@@ -26,7 +26,7 @@ public class homepageActivity extends AppCompatActivity {
 
         final MediaPlayer sound_theme = MediaPlayer.create(this, R.raw.signal_change);
         final RelativeLayout bg = (RelativeLayout) findViewById(R.id.homepage_bg);
-        bg.setBackgroundResource(R.drawable.home3);
+        bg.setBackgroundResource(R.drawable.home_hd);
 
         Button select = (Button) findViewById(R.id.play_now);
         select.setOnClickListener(new View.OnClickListener() {
@@ -77,9 +77,4 @@ public class homepageActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onPause(){
-        super.onPause();
-        this.finish();
-    }
 }

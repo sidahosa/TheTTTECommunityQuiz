@@ -61,4 +61,8 @@ public class answerspage extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+    }
+
 }

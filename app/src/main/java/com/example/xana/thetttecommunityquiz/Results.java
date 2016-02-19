@@ -31,7 +31,7 @@ public class Results extends AppCompatActivity {
 
         final MediaPlayer home = MediaPlayer.create(this, R.raw.signal_change);
 
-        AdView mAdView = (AdView) findViewById(R.id.adView);
+        AdView mAdView = (AdView) findViewById(R.id.adView1);
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView.loadAd(adRequest);
 
@@ -40,12 +40,14 @@ public class Results extends AppCompatActivity {
         //get text view
         TextView t = (TextView) findViewById(R.id.textResult);
         ImageView iv1 = (ImageView) findViewById(R.id.prize);
+        TextView s = (TextView) findViewById(R.id.streakalive);
         //get score
 
         Bundle b = getIntent().getExtras();
         int score = b.getInt("score");
         //display score
         user_score.setText(score + "/" + AdminPicked.numberofquestions);
+        s.setText("  Longest Streak is " + quizscreen.longest_streak + "  ");
 
         String name = "Missing";
         switch (AdminPicked.selectedAdmin) {
@@ -157,6 +159,8 @@ public class Results extends AppCompatActivity {
                 Intent intent = new Intent(Results.this, answerspage.class);
                 if(AdminPicked.music == 1) home.start();
                 startActivity(intent);
+                quizscreen.longest_streak = 0;
+                System.gc();
                 if(theme != null) theme.release();
                 finish();
             }
@@ -332,7 +336,7 @@ public class Results extends AppCompatActivity {
             } else {
                 switch (score) {
                     case 0:
-                        t.setText("You don't know anything about us...");
+                        t.setText("You don't know anything about " + name + "...");
                         Picasso.with(this).load("http://i1036.photobucket.com/albums/a443/" +
                                 "patsviper46/hqdefault_zpsm92xs8t8.jpg").fit().
                                 centerCrop().into(iv1);
@@ -376,7 +380,7 @@ public class Results extends AppCompatActivity {
                         break;
                     case 9:
                     case 10:
-                        t.setText("I heard about this tale this person and getting only a 9/15." + "\n" +
+                        t.setText("I heard about this tale and getting only a 9/15." + "\n" +
                                 "Shut up! It's not funny.");
                         Picasso.with(this).load("http://i1036.photobucket.com/" +
                                 "albums/a443/patsviper46/Breakvan2_" +
@@ -659,7 +663,7 @@ public class Results extends AppCompatActivity {
                         break;
                     case 23:
                         t.setText("Making all the admins proud with that score! " +
-                                "Sir Topham Hatt has called you to give you a branch line");
+                                "Sir Topham Hatt has called to give you a branch line");
                         Picasso.with(this).load("http://i1036.photobucket.com/" +
                                 "albums/a443/patsviper46/ThomasPercyand" +
                                 "OldSlowCoach70_zpsarlts2ih.png").fit().centerCrop().into(iv1);
@@ -813,7 +817,7 @@ public class Results extends AppCompatActivity {
                     case 25:
                     case 26:
                         t.setText("Making all the admins proud with that score! " +
-                                "Sir Topham Hatt has called you to give you a branch line");
+                                "Sir Topham Hatt has called to give you a branch line");
                         Picasso.with(this).load("http://i1036.photobucket.com/" +
                                 "albums/a443/patsviper46/ThomasPercyand" +
                                 "OldSlowCoach70_zpsarlts2ih.png").fit().centerCrop().into(iv1);
